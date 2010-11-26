@@ -1,4 +1,4 @@
-package net.alexguev.tweetadorn
+package net.ushadow.calliope
 
 import scala.collection.mutable
 

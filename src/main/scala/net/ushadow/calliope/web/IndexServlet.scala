@@ -1,4 +1,4 @@
-package net.alexguev.tweetadorn.web
+package net.ushadow.calliope.web
 
 import javax.servlet.http._
 

@@ -8,7 +8,7 @@
     <servlet>
         <servlet-name>IndexServlet</servlet-name>
         <servlet-class>
-            net.u-shadow.calliope.web.IndexServlet
+            net.ushadow.calliope.web.IndexServlet
         </servlet-class>
     </servlet>
 
