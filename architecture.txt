@@ -1,0 +1,1 @@
+An event must exist in the event store before it is made available for processing
