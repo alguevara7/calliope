@@ -1,1 +1,12 @@
-An event must exist in the event store before it is made available for processing
+- An event must exist in the event store before it is made available for processing
+
+- processing an event by an activity will yield an action
+-- the processing method of activity should be a pure function because the activity will be re-executed 
+   if the systems fails while waiting for an activity to return its action
+-- or, an activity can modify the world on  through the action returned by its processing method  
+  
+- error handling code should be injected (using some sort of AOP ... guice !?) 
+  
+- any object can be persisted to gae's store. most probably a refactoring api will be required
+
+- mmm activities could declare their interest in a specific kind of event (all events have a kind)
