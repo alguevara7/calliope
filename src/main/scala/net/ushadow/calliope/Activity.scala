@@ -1,7 +1,7 @@
 package net.ushadow.calliope
 
-class Activity {
+trait Activity {
 	
-	def process(event: Event): Option[Action] = None
+	def process(event: Event): Option[Action]
 
 }

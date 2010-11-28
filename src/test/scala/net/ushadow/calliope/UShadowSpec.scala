@@ -11,22 +11,43 @@ import org.mockito.Mockito._
 @RunWith(classOf[JUnitRunner])
 class UShadowSpec extends Spec with MockitoSugar {
 	
-	//TBD apply the actions to the world
-	
 	describe("an u-shadow") {
-		it("must allow all activities to process received events") {
+
+		it("should apply the actions resulting from processing activities") {
+			val world = new World
+			
 			val activity1 = mock[Activity]
 			val activity2 = mock[Activity]
-			val ushadow = new UShadow(new World, List(activity1, activity2))
+			val ushadow = new UShadow(world, List(activity1, activity2))
 			
 			val event = new Event("e-mail")
+			
+			val action1 = mock[Action]
+			when(activity1.process(event)).thenReturn(Some(action1))
+			
+			val action2 = mock[Action]
+			when(activity2.process(event)).thenReturn(Some(action2))
+			
 			ushadow.receive(event)
 			
-			verify(activity1).process(event)
-			verify(activity2).process(event)
+			verify(action1).apply(world)
+			verify(action2).apply(world)
 		}
+
+		it("should not fail when processing an activity returns None") {
+			val world = new World
+			
+			val activity = mock[Activity]
+			val ushadow = new UShadow(null, List(activity))
+			
+			val event = new Event("e-mail")
+			
+			val action = mock[Action]
+			when(activity.process(event)).thenReturn(None)
+			
+			ushadow.receive(event)
+		}
+		
 	}
 	
-	
-
 }
