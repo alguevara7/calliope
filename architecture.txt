@@ -1,5 +1,7 @@
 - An event must exist in the event store before it is made available for processing
 
+- use joda time!!!
+
 - processing an event by an activity will yield an action
 -- the processing method of activity should be a pure function because the activity will be re-executed 
    if the systems fails while waiting for an activity to return its action
@@ -10,3 +12,7 @@
 - any object can be persisted to gae's store. most probably a refactoring api will be required
 
 - mmm activities could declare their interest in a specific kind of event (all events have a kind)
+
+- improve matching for many activities:
+-- an activity could publish its interests using for example the kind and receivedOn. then we could only process the actions
+   whose interests are met by the current event  

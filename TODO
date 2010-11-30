@@ -1,10 +1,15 @@
-TODO
-- unit test framework
--- servlet class exists
-
-
-release 0.1.0
+release 0.0.1
 as a user I care about
 - receiving a notification in my iphone whenever a receive a message on my intelliware account from a specific user
 -- remote notification, use prowl  
 
+release 0.0.2
+as a user I care about
+- receiving a notification in my iphone whenever a comment is added to one of my i-proving blog posts
+
+later
+- actions can have an approval process ...(sent by email)
+
+
+- UNIT TEST FRAMEWORK (compiler extension)
+-- servlet class exists

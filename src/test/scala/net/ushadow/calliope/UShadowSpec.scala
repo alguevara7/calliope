@@ -20,7 +20,7 @@ class UShadowSpec extends Spec with MockitoSugar {
 			val activity2 = mock[Activity]
 			val ushadow = new UShadow(world, List(activity1, activity2))
 			
-			val event = new Event("e-mail")
+			val event = new Event(null)
 			
 			val action1 = mock[Action]
 			when(activity1.process(event)).thenReturn(Some(action1))
@@ -40,14 +40,14 @@ class UShadowSpec extends Spec with MockitoSugar {
 			val activity = mock[Activity]
 			val ushadow = new UShadow(null, List(activity))
 			
-			val event = new Event("e-mail")
+			val event = new Event(null)
 			
 			val action = mock[Action]
 			when(activity.process(event)).thenReturn(None)
 			
 			ushadow.receive(event)
 		}
-		
+
 	}
 	
 }
