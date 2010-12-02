@@ -24,13 +24,14 @@ class SendNotificationUponReceivingEmail(
   class DataExtractor(protected val event: Event) extends EMailDataExtractor {}
   
   def process(event: Event): Option[Action] = {
-	//use pattern matching
+//	use pattern matching
     val extractor = new DataExtractor(event)
     if (extractor.kind=="e-mail") {
-    	when.contains(extractor.sentOn)
+//    	when.contains(extractor.sentOn)
 //    	if () {
 //    		
 //    	}
+    	None
     } else {
     	None
     }

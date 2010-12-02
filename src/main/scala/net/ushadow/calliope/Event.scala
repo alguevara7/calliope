@@ -1,20 +1,18 @@
 package net.ushadow.calliope
 
-import com.google.appengine.api.datastore.Entity
+trait Event {
 
-/**
- * An event can not be modified.
- */
-class Event(private val payload: Entity) {
+  def kind: String
 
-	def kind = payload.getKind
+  def apply[T](name: String): Option[Object] = {
+    if (hasProperty(name)) {
+      Some(getProperty(name))
+    } else {
+      None
+    }
+  }
 
-	def apply[T](name: String): Option[Object] = {
-		if (payload.hasProperty(name)) {
-			Some(payload.getProperty(name))
-		} else {
-			None
-		}
-	}
-	
+  protected def hasProperty(name: String): Boolean
+  protected def getProperty(name: String): Object
+
 }
