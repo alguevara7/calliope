@@ -7,35 +7,30 @@ import org.joda.time._
 
 class RichInterval(private val interval: Interval) {
   def contains(optionalInstant: Option[ReadableInstant]) = optionalInstant match {
-  	case Some(instant) => interval.contains(instant)
-	case None => false
+    case Some(instant) => interval.contains(instant)
+    case None => false
   }
 }
 
 object RichInterval {
-	implicit def RichInterval(interval: Interval) = new RichInterval(interval)
+  implicit def RichInterval(interval: Interval) = new RichInterval(interval)
 }
 
 class SendNotificationUponReceivingEmail(
-	from: String,
-	when: Interval
-  ) extends Activity {
+  from: String,
+  when: Interval) extends Activity {
 
   class DataExtractor(protected val event: Event) extends EMailDataExtractor {}
-  
+
   def process(event: Event): Option[Action] = {
-//	use pattern matching
+    //use pattern matching
     val extractor = new DataExtractor(event)
-    if (extractor.kind=="e-mail") {
-//    	when.contains(extractor.sentOn)
-//    	if () {
-//    		
-//    	}
-    	None
+    if (extractor.kind == "e-mail") {
+      Some(new SendNotification("alexei's iphone", "send computer email"))
     } else {
-    	None
+      None
     }
-    
+
   }
 
 }

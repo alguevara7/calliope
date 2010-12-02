@@ -1,0 +1,6 @@
+<queue-entries>
+  <queue>
+    <name>dispatcher-queue</name>
+    <rate>100/d</rate>
+  </queue>
+</queue-entries>

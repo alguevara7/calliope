@@ -18,8 +18,8 @@ class Emitter {
     val transaction = datastore.beginTransaction
     try {
       val key = datastore.put(entity)
-      val queue = QueueFactory.getDefaultQueue();
-      queue.add(url("/dipatcher").param("key", KeyFactory.keyToString(key)))
+      val queue = QueueFactory.getQueue("dispatcher-queue")
+      queue.add(url("/tasks/dispatcher").param("key", KeyFactory.keyToString(key)))
       transaction.commit
     } catch {
       case _: DatastoreFailureException => transaction.rollback
