@@ -52,7 +52,6 @@ class UShadowSpec extends Spec with MockitoSugar {
 
   class FakeEvent extends Event {
     def kind = "fake"
-    def hasProperty(name: String) = false
-    def getProperty(name: String) = None
+	def properties = Map()     	
   }
 }

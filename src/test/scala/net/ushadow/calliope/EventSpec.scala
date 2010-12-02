@@ -14,8 +14,7 @@ class EventSpec extends Spec with MockitoSugar {
     it("should delegate apply to hasProperty/getProperty") {
       val event = new Event {
         def kind = "fake"
-        def hasProperty(name: String): Boolean = name match { case "name" => true; case _ => false }
-        def getProperty(name: String): Object = "value"
+        def properties = Map("name" -> "value")
       }
 
       assert(event.kind == "fake")

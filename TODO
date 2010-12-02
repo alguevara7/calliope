@@ -1,6 +1,9 @@
 TODO
 - EventThatIsStorableSpec
 
+
+- deal with data store in readonly mode
+
 release 0.0.1
 as a user I care about
 - receiving a notification in my iphone whenever a receive a message on my intelliware account from a specific user

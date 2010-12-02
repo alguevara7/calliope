@@ -12,7 +12,9 @@ trait Event {
     }
   }
 
-  protected def hasProperty(name: String): Boolean
-  protected def getProperty(name: String): Object
+  def properties: Map[String, Object]
+  
+  protected def hasProperty(name: String): Boolean = properties.contains(name)
+  protected def getProperty(name: String): Object = properties(name)
 
 }
