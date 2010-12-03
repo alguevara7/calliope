@@ -1,5 +1,7 @@
-package net.ushadow.calliope
+package net.ushadow.calliope.activity
 
+import net.ushadow.calliope._
+import net.ushadow.calliope.action._
 import java.util.Date
 import org.joda.time._
 

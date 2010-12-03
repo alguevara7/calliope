@@ -1,6 +1,6 @@
 package net.ushadow.calliope
 
-import activity._
+import net.ushadow.calliope.activity._
 
 class Dispatcher {
 	

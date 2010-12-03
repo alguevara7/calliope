@@ -8,6 +8,14 @@
 		<servlet-name>IndexServlet</servlet-name>
 		<servlet-class>net.ushadow.calliope.web.IndexServlet</servlet-class>
 	</servlet>
+  <servlet>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <servlet-class>net.ushadow.calliope.web.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>EmitterServlet</servlet-name>
+    <servlet-class>net.ushadow.calliope.web.EmitterServlet</servlet-class>
+  </servlet>
 
 	<servlet-mapping>
 		<servlet-name>IndexServlet</servlet-name>
@@ -21,13 +29,14 @@
 
   <servlet-mapping>
     <servlet-name>EmitterServlet</servlet-name>
-    <url-pattern>/tasks/emitter</url-pattern>
+    <url-pattern>/cron/emitter</url-pattern>
   </servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>index</welcome-file>
 	</welcome-file-list>
 
+<!-- 
 	<security-constraint>
 		<web-resource-collection>
 			<url-pattern>/tasks/*</url-pattern>
@@ -45,4 +54,5 @@
 			<role-name>admin</role-name>
 		</auth-constraint>
 	</security-constraint>
+	 -->
 </web-app>

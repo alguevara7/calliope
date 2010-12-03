@@ -3,6 +3,6 @@
   <cron>
     <url>/cron/emitter</url>
     <description>emitter</description>
-    <schedule>every 2 hours</schedule>
+    <schedule>every 1 minute</schedule>
   </cron>
 </cronentries>

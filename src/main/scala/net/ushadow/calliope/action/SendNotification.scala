@@ -1,4 +1,6 @@
-package net.ushadow.calliope
+package net.ushadow.calliope.action
+
+import net.ushadow.calliope._
 
 class SendNotification(
 	recipient: String,

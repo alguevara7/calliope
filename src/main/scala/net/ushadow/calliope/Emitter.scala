@@ -18,7 +18,8 @@ class Emitter {
     val transaction = datastore.beginTransaction
     try {
       val key = datastore.put(entity)
-      val queue = QueueFactory.getQueue("dispatcher-queue")
+      println(key)
+      val queue = QueueFactory.getDefaultQueue() // Queue("dispatcher-queue")
       queue.add(url("/tasks/dispatcher").param("key", KeyFactory.keyToString(key)))
       transaction.commit
     } catch {

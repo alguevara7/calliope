@@ -107,18 +107,20 @@
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
 			<version>1.3.7</version>
-			<scope>provided</scope>
+			<!--<scope>provided</scope>-->
 		</dependency>
-		<!--
-			GAE libraries for local testing as described here:
-			http://code.google.com/appengine/docs/java/howto/unittesting.html
-		-->
+
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-labs</artifactId>
 			<version>${gae.version}</version>
-			<scope>test</scope>
+			<!--<scope>provided</scope>-->
 		</dependency>
+
+		<!--
+			GAE libraries for local testing as described here:
+			http://code.google.com/appengine/docs/java/howto/unittesting.html
+		-->
 
 		<dependency>
 			<groupId>com.google.appengine</groupId>
@@ -191,21 +193,17 @@
 					</sourceIncludes>
 				</configuration>
 			</plugin>
-
 			<plugin>
-				<groupId>net.kindleit</groupId>
-				<artifactId>maven-gae-plugin</artifactId>
-				<version>0.7.2</version>
-				<dependencies>
-					<dependency>
-						<groupId>net.kindleit</groupId>
-						<artifactId>gae-runtime</artifactId>
-						<version>${gae.version}</version>
-						<type>pom</type>
-					</dependency>
-				</dependencies>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*Test.*</include>
+						<include>**/*Suite.*</include>
+						<include>**/*Spec.*</include>
+					</includes>
+				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -237,6 +235,10 @@
 						<type>pom</type>
 					</dependency>
 				</dependencies>
+				<configuration>
+					<debugSuspend>false</debugSuspend>
+					<debugPort>9001</debugPort>
+				</configuration>
 			</plugin>
 
 			<!--

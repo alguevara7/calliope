@@ -10,11 +10,16 @@ class DispatcherServlet extends HttpServlet {
   private val dispatcher = new Dispatcher
 
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse) {
-    dispatcher.dispatch(toStorableEvent(req))
+    try {
+      dispatcher.dispatch(toStorableEvent(req))
+    } catch {
+      case e: Exception => println(e)
+    }
   }
 
   private def toStorableEvent(req: HttpServletRequest): Event = {
     val keyAsString = req.getParameter("key")
+    println(req)
     val key = KeyFactory.stringToKey(keyAsString)
     val entity = datastore.get(key)
     return new StorableEvent(entity)
