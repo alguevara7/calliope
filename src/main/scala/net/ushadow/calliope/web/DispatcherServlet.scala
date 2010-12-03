@@ -19,7 +19,6 @@ class DispatcherServlet extends HttpServlet {
 
   private def toStorableEvent(req: HttpServletRequest): Event = {
     val keyAsString = req.getParameter("key")
-    println(req)
     val key = KeyFactory.stringToKey(keyAsString)
     val entity = datastore.get(key)
     return new StorableEvent(entity)

@@ -1,8 +1,8 @@
 package net.ushadow.calliope
 
 import com.google.appengine.api.datastore.KeyFactory
-import com.google.appengine.api.labs.taskqueue.QueueFactory
-import com.google.appengine.api.labs.taskqueue.Queue
+import com.google.appengine.api.labs.taskqueue._
+import com.google.appengine.api.labs.taskqueue.TaskOptions._
 import com.google.appengine.api.datastore.DatastoreFailureException
 import com.google.appengine.api.datastore.DatastoreServiceFactory
 import com.google.appengine.api.datastore.Entity
@@ -18,16 +18,15 @@ class Emitter {
     val transaction = datastore.beginTransaction
     try {
       val key = datastore.put(entity)
-      println(key)
-      val queue = QueueFactory.getDefaultQueue() // Queue("dispatcher-queue")
-      queue.add(url("/tasks/dispatcher").param("key", KeyFactory.keyToString(key)))
+      val queue = QueueFactory.getQueue("dispatcher-queue")
+      queue.add(transaction, url("/tasks/dispatcher").method(Method.GET).param("key", KeyFactory.keyToString(key)))
       transaction.commit
-    } catch {
-      case _: DatastoreFailureException => transaction.rollback
+    } finally {
+      if (transaction.isActive) {
+        transaction.rollback
+      }
     }
-    
-    //TODO notify caller on exception
-    
+
   }
 
   private def copyProperties(event: Event, entity: Entity) {

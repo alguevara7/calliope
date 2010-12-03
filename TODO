@@ -1,4 +1,5 @@
 TODO
+- error recovery
 - EventThatIsStorableSpec
 
 
@@ -15,7 +16,6 @@ as a user I care about
 
 later
 - actions can have an approval process ...(sent by email)
-
 
 - UNIT TEST FRAMEWORK (compiler extension)
 -- servlet class exists

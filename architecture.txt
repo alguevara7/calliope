@@ -1,5 +1,7 @@
 - An event must exist in the event store before it is made available for processing
 
+- sending an action is an event
+
 - use joda time!!!
 
 - processing an event by an activity will yield an action

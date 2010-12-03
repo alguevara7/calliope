@@ -126,14 +126,22 @@
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-stubs</artifactId>
 			<version>${gae.version}</version>
-			<scope>test</scope>
+			<!--<scope>test</scope>-->
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-testing</artifactId>
 			<version>${gae.version}</version>
-			<scope>test</scope>
+			<!--<scope>test</scope>-->
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.5</version>
 		</dependency>
 
 	</dependencies>
@@ -202,6 +210,9 @@
 						<include>**/*Suite.*</include>
 						<include>**/*Spec.*</include>
 					</includes>
+					<excludes>
+						<exclude>**/*WorldTest.*</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 			<plugin>

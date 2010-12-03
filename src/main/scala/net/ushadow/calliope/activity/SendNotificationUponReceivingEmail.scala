@@ -25,10 +25,10 @@ class SendNotificationUponReceivingEmail(
   class DataExtractor(protected val event: Event) extends EMailDataExtractor {}
 
   def process(event: Event): Option[Action] = {
-    //use pattern matching
+    //FUN use pattern matching
     val extractor = new DataExtractor(event)
     if (extractor.kind == "e-mail") {
-      Some(new SendNotification("alexei's iphone", "send computer email"))
+      Some(new SendProwlNotification("important e-mail received", "an e-mail sent from: " + extractor.from.getOrElse("Unknown") + " has been received"))
     } else {
       None
     }
