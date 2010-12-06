@@ -22,7 +22,7 @@ class World {
   def sendProwlNotification(subject: String, message: String) = {
     val request = new HTTPRequest(
     		new URL("https://prowl.weks.net/publicapi/add?" +
-    			Map("apikey" -> "",
+    			Map("apikey" -> "3b6f6ae0c1f98f10ee38307ca39bb9b6d3561d0e",
     				"application" -> "u-shadow",
     				"event" -> URLEncoder.encode(subject),
     				"description" -> URLEncoder.encode(message)).map{case (k, v) => k+"="+v}.reduceRight(_ + "&" + _)), 
@@ -31,7 +31,7 @@ class World {
     val response = fetchService.fetch(request)
     logInfo("response: " + response.getResponseCode)
     val content = XML.load(new ByteArrayInputStream(response.getContent));
-    logInfo("content: " + content)
+    logInfo("\n" + content)
   }
 
   private def logInfo(message: String) = LoggerFactory.getLogger(getClass()).info(message)

@@ -1,4 +1,5 @@
 TODO
+- added exjello to maven repo hosted in github
 - error recovery
 - EventThatIsStorableSpec
 
