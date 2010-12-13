@@ -8,13 +8,17 @@
 		<servlet-name>IndexServlet</servlet-name>
 		<servlet-class>net.ushadow.calliope.web.IndexServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<servlet-class>net.ushadow.calliope.web.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>EmitterServlet</servlet-name>
+		<servlet-class>net.ushadow.calliope.web.EmitterServlet</servlet-class>
+	</servlet>
   <servlet>
-    <servlet-name>DispatcherServlet</servlet-name>
-    <servlet-class>net.ushadow.calliope.web.DispatcherServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>EmitterServlet</servlet-name>
-    <servlet-class>net.ushadow.calliope.web.EmitterServlet</servlet-class>
+    <servlet-name>mailHandler</servlet-name>
+    <servlet-class>net.ushadow.calliope.web.MailHandlerServlet</servlet-class>
   </servlet>
 
 	<servlet-mapping>
@@ -27,11 +31,16 @@
 		<url-pattern>/tasks/dispatcher</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>EmitterServlet</servlet-name>
+		<url-pattern>/cron/emitter</url-pattern>
+	</servlet-mapping>
+	
   <servlet-mapping>
-    <servlet-name>EmitterServlet</servlet-name>
-    <url-pattern>/cron/emitter</url-pattern>
+    <servlet-name>mailHandler</servlet-name>
+    <url-pattern>/_ah/mail/*</url-pattern>
   </servlet-mapping>
-
+	
 	<welcome-file-list>
 		<welcome-file>index</welcome-file>
 	</welcome-file-list>
@@ -44,7 +53,7 @@
 			<role-name>admin</role-name>
 		</auth-constraint>
 	</security-constraint>
-	
+
 	<security-constraint>
 		<web-resource-collection>
 			<url-pattern>/cron/*</url-pattern>
@@ -53,5 +62,14 @@
 			<role-name>admin</role-name>
 		</auth-constraint>
 	</security-constraint>
-	
+
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/_ah/mail/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
 </web-app>
