@@ -1,7 +1,9 @@
-package net.ushadow.calliope
+package net.ushadow.calliope.extractor
 
+import net.ushadow.calliope._
 import org.joda.time.DateTime
 import java.util.Date
+
 trait CoreDataExtractor {
 	
 	protected val event: Event

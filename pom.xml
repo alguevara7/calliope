@@ -213,7 +213,7 @@
 					</projectnatures>
 					<buildcommands>
 						<buildcommand>ch.epfl.lamp.sdt.core.scalabuilder</buildcommand>
-						<buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
+						<!-- <buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand> -->
 						<buildcommand>com.google.appengine.eclipse.core.enhancerbuilder</buildcommand>
 						<buildcommand>com.google.appengine.eclipse.core.projectValidator</buildcommand>
 					</buildcommands>

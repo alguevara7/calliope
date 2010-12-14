@@ -9,7 +9,6 @@ TODO
 - error recovery
 - EventThatIsStorableSpec
 
-
 - deal with data store in readonly mode
 
 release 0.0.1
