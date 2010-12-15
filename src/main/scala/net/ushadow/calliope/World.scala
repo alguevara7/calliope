@@ -37,17 +37,3 @@ class World {
   private def logInfo(message: String) = LoggerFactory.getLogger(getClass()).info(message)
   
 }
-
-object WorldTest {
-	
-  def main(args: Array[String]) {
-    val helper = new LocalServiceTestHelper(new LocalURLFetchServiceTestConfig());
-    helper.setUp
-    try {
-    	new World().sendProwlNotification("lala lalala lalal", "alexguev@gmail.com")
-    } finally {
-    	helper.tearDown
-    }
-  }
-
-}

@@ -1,5 +1,8 @@
 package net.ushadow.calliope.web
 
+import com.google.appengine.api.datastore.Email
+import javax.mail.internet.InternetAddress
+import javax.mail.Address
 import net.ushadow.calliope.InMemoryEvent
 import net.ushadow.calliope.Emitter
 import org.slf4j.LoggerFactory
@@ -26,7 +29,16 @@ class MailHandlerServlet extends HttpServlet {
     
     emitter.emit(new InMemoryEvent(
     		"e-mail", 
-    		Map("sentOn"->message.getSentDate, "from"->message.getFrom.toString)))
+    		Map("sentOn" -> message.getSentDate, 
+    			"from" -> toText(message.getFrom),
+    			"to"->"")))
+  }
+  
+  def toText(addresses: Array[Address]): String = {
+	//val b: Email = null
+	addresses.filter(_.isInstanceOf[InternetAddress]).map(_ match {
+		case a: InternetAddress if true => a.getAddress
+	}).first
   }
   
   private def logContent(message: MimeMessage) {

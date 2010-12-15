@@ -13,7 +13,7 @@
 		<gae.version>1.4</gae.version>
 		<downloadSources>true</downloadSources>
 		<gae.application.version>snapshot</gae.application.version>
-		<gae.home>/Users/alexguev/Library/GoogleAppEngine/appengine-java-sdk-1.4</gae.home>
+		<gae.home>/Users/alexguev/Library/GoogleAppEngine/appengine-java-sdk-1.4.0</gae.home>
 	</properties>
 
 	<repositories>
@@ -91,10 +91,6 @@
 			<version>1.1</version>
 		</dependency>
 
-		<!--
-			J2EE Servlet API. We need it to compile IndexServlet class. You can
-			probably remove it, if you don't explicitly use Servlets
-		-->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-servlet_2.5_spec</artifactId>
@@ -115,27 +111,32 @@
 			<version>0.9.24</version>
 		</dependency>
 
-		<!--
-			<dependency> <groupId>com.google.appengine</groupId>
+		<dependency>
+			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>${gae.version}</version> </dependency> <dependency>
+			<version>${gae.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-labs</artifactId>
-			<version>${gae.version}</version> </dependency>
-		-->
+			<version>${gae.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-stubs</artifactId>
 			<version>${gae.version}</version>
-			<scope>test</scope>
+			<!--<scope>test</scope>-->
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-testing</artifactId>
 			<version>${gae.version}</version>
-			<scope>test</scope>
+      <!--<scope>test</scope>-->
+      <scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -213,7 +214,9 @@
 					</projectnatures>
 					<buildcommands>
 						<buildcommand>ch.epfl.lamp.sdt.core.scalabuilder</buildcommand>
-						<!-- <buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand> -->
+						<!--
+							<buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
+						-->
 						<buildcommand>com.google.appengine.eclipse.core.enhancerbuilder</buildcommand>
 						<buildcommand>com.google.appengine.eclipse.core.projectValidator</buildcommand>
 					</buildcommands>
@@ -262,22 +265,37 @@
 			</plugin>
 			<!--
 				The actual maven-gae-plugin. Type "mvn gae:run" to run project, "mvn
-				gae:deploy" to upload to GAE. <plugin>
-
-				<groupId>net.kindleit</groupId>
-				<artifactId>maven-gae-plugin</artifactId> <version>0.7.3</version>
-				<dependencies> <dependency> <groupId>net.kindleit</groupId>
-				<artifactId>gae-runtime</artifactId>
-				<version>${gae.version}</version> <type>pom</type> </dependency>
-				</dependencies> <configuration> <debugSuspend>false</debugSuspend>
-				<debugPort>9001</debugPort> </configuration> </plugin>
+				gae:deploy" to upload to GAE.
 			-->
+			<plugin>
+				<groupId>net.kindleit</groupId>
+				<artifactId>maven-gae-plugin</artifactId>
+				<version>0.7.3</version>
+				<dependencies>
+				<!-- 
+					<dependency>
+						<groupId>net.kindleit</groupId>
+						<artifactId>gae-runtime</artifactId>
+						<version>1.3.8</version>
+						<type>pom</type>
+					</dependency>
+					 -->
+				</dependencies>
+				<configuration>
+					<debugSuspend>false</debugSuspend>
+					<debugPort>9001</debugPort>
+				</configuration>
+			</plugin>
 			<!--
 				Upload application to the appspot automatically, during
-				release:perform <plugin>
-				<artifactId>maven-release-plugin</artifactId> <configuration>
-				<goals>gae:deploy</goals> </configuration> </plugin>
+				release:perform
 			-->
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<goals>gae:deploy</goals>
+				</configuration>
+			</plugin>
 
 			<!-- Java compiler version -->
 			<plugin>
