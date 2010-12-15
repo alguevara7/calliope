@@ -30,12 +30,10 @@ class MailHandlerServlet extends HttpServlet {
     emitter.emit(new InMemoryEvent(
     		"e-mail", 
     		Map("sentOn" -> message.getSentDate, 
-    			"from" -> toText(message.getFrom),
-    			"to"->"")))
+    			"from" -> toText(message.getFrom))))
   }
   
   def toText(addresses: Array[Address]): String = {
-	//val b: Email = null
 	addresses.filter(_.isInstanceOf[InternetAddress]).map(_ match {
 		case a: InternetAddress if true => a.getAddress
 	}).first

@@ -13,7 +13,7 @@ class DispatcherServlet extends HttpServlet {
     try {
       dispatcher.dispatch(toStorableEvent(req))
     } catch {
-      case e: Exception => println(e)
+      case e: Exception => println(e.getMessage)
     }
   }
 
