@@ -23,7 +23,7 @@ class SendNotificationUponReceivingEmail(
     
     if (extractor.kind == "e-mail" 
      && (extractor.from.getOrElse("") == "dan.light@intelliware.ca" || extractor.from.getOrElse("") == "alexei.guevara@intelliware.ca")
-     && new Interval(new DateTime().withHourOfDay(6).withMinuteOfHour(0), new DateTime().withHourOfDay(10).withMinuteOfHour(0)).contains(extractor.sentOn)) {
+     && new Interval(new DateTime().withHourOfDay(20).withMinuteOfHour(0), new DateTime().withHourOfDay(23).withMinuteOfHour(59)).contains(extractor.sentOn)) {
       Some(new SendProwlNotification("important e-mail received", "an e-mail sent from: " + extractor.from.getOrElse("Unknown") + " has been received"))
     } else {
       None
