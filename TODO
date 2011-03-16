@@ -1,6 +1,6 @@
 TODO
 
-- configure maven gae plugin and google eclipse plugin so they can work together! (spent a bit of time)
+-NO configure maven gae plugin and google eclipse plugin so they can work together! (spent a bit of time)
 - integrate with guice
 
 -X added exjello to maven repo hosted in github
